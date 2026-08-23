@@ -1,0 +1,4 @@
+Q01 [fr] expected GCT_notes_exemples_50-2.pdf rank=3 R1=0 R3=1
+Question: Qui est le président de la commission technique chargée de la maintenance des équipements lourds à Gabès ?
+Expected full pos in 50: 3 sim_exp=0.8222 gap_top1=0.0002 top1=0.8225 spread_top1-5=0.0043
+Top5: [{'file': 'GCT_notes_exemples_50-37.pdf', 'score': 0.8225, 'page': 1}, {'file': 'GCT_notes_exemples_50-22.pdf', 'score': 0.8223, 'page': 1}, {'file': 'GCT_notes_exemples_50-2.pdf', 'score': 0.8222, 'page': 1}, {'file': 'GCT_notes_exemples_50-6.pdf', 'score': 0.8198, 'page': 1}, {'file': 'GCT_notes_exemples_50-29.pdf', 'score': 0.8182, 'page': 1}]

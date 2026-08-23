@@ -1,0 +1,30 @@
+# Requirements production (image Docker) — sans dépendances de test.
+# Fichier Requirements complet pour le développement : requirements.txt.
+
+# Framework Web
+fastapi==0.115.6
+uvicorn[standard]==0.24.0
+pydantic==2.13.4
+pydantic-settings==2.15.0
+
+# Vector Store et Embeddings
+chromadb==0.4.22
+torch==2.13.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+sentence-transformers==2.2.2
+scikit-learn==1.3.2
+
+# Ollama
+ollama==0.6.2
+
+# Utilitaires
+python-dotenv==1.0.0
+python-multipart==0.0.6
+pypdf==3.17.4
+
+# OCR (Tesseract local)
+pytesseract==0.3.13
+pymupdf==1.28.2
+Pillow==12.3.0
+
+# httpx requis par ollama==0.6.2 (httpx>=0.27) et compatible fastapi==0.115.6.
+httpx==0.28.1

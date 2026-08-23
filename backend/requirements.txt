@@ -1,0 +1,40 @@
+# Framework Web
+fastapi==0.115.6
+uvicorn[standard]==0.24.0
+# pydantic/pydantic-settings alignés sur la version installée/validée du venv —
+# requis par ollama==0.6.2 (pydantic>=2.9).
+pydantic==2.13.4
+pydantic-settings==2.15.0
+
+# Note : les packages LangChain (langchain, langchain-community,
+# langchain-ollama) ont été retirés — ils ne sont pas utilisés par le code
+# (l'accès à Ollama passe directement par le client `ollama`). Ils causaient un
+# conflit de résolution sur langchain-core.
+
+# Vector Store et Embeddings
+chromadb==0.4.22
+# torch CPU uniquement (l'application n'utilise jamais le GPU) — l'index CPU
+# évite de tirer ~3.4 Go de dépendances CUDA (nvidia-*) dans l'image Docker.
+torch==2.13.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+sentence-transformers==2.2.2
+scikit-learn==1.3.2
+
+# Ollama
+ollama==0.6.2
+
+# Utilitaires
+python-dotenv==1.0.0
+python-multipart==0.0.6
+pypdf==3.17.4
+
+# OCR (Tesseract local) — binaire installé via winget (UB-Mannheim.TesseractOCR),
+# données de langue dans backend/data/tessdata (ara/eng/fra/osd)
+pytesseract==0.3.13
+pymupdf==1.28.2
+Pillow==12.3.0
+
+# Tests
+pytest==7.4.3
+# httpx aligné sur la version installée/validée du venv (0.28.1) — requis par
+# ollama==0.6.2 (httpx>=0.27) et compatible fastapi==0.115.6.
+httpx==0.28.1

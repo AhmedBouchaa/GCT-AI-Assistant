@@ -1,0 +1,4 @@
+Q06 [ar] expected GCT_notes_exemples_50-7.pdf rank=1 R1=1 R3=1
+Question: من هو رئيس لجنة تقييم عروض صفقة اقتناء قطع الغيار؟
+Expected full pos in 50: 1 sim_exp=0.8841 gap_top1=0.0000 top1=0.8841 spread_top1-5=0.0842
+Top5: [{'file': 'GCT_notes_exemples_50-7.pdf', 'score': 0.8841, 'page': 1}, {'file': 'GCT_notes_exemples_50-9.pdf', 'score': 0.8841, 'page': 1}, {'file': 'GCT_notes_exemples_50-45.pdf', 'score': 0.8073, 'page': 1}, {'file': 'GCT_notes_exemples_50-12.pdf', 'score': 0.8003, 'page': 1}, {'file': 'GCT_notes_exemples_50-33.pdf', 'score': 0.7999, 'page': 1}]

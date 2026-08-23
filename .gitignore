@@ -1,0 +1,38 @@
+# Secrets
+.env
+**/.env
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+backend/venv/
+venv/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude local settings
+.claude/settings.local.json
+.claude/*.bak-*
+
+# Runtime / generated data
+data/
+backend/data/
+
+# Chroma / vector databases
+**/chroma/
+**/chroma.backup/
+**/chroma.sqlite3
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

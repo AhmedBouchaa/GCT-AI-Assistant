@@ -1,0 +1,4 @@
+Q09 [ar] expected GCT_notes_exemples_50-50.pdf rank=None R1=0 R3=0
+Question: من هو رئيس لجنة استلام التوريدات بوحدة الإنتاج بقابس؟
+Expected full pos in 50: 6 sim_exp=0.8894 gap_top1=0.0028 top1=0.8922 spread_top1-5=0.0021
+Top5: [{'file': 'GCT_notes_exemples_50-27.pdf', 'score': 0.8922, 'page': 1}, {'file': 'GCT_notes_exemples_50-10.pdf', 'score': 0.8908, 'page': 1}, {'file': 'GCT_notes_exemples_50-28.pdf', 'score': 0.8907, 'page': 1}, {'file': 'GCT_notes_exemples_50-14.pdf', 'score': 0.8902, 'page': 1}, {'file': 'GCT_notes_exemples_50-48.pdf', 'score': 0.8901, 'page': 1}]

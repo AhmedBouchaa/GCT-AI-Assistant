@@ -1,0 +1,75 @@
+# GCT AI Assistant — architecture Docker locale.
+#
+# 3 services :
+#   - ollama  : LLM local (mistral:latest à tirer : docker compose exec ollama ollama pull mistral:latest)
+#   - backend : FastAPI + ChromaDB embarquée + OCR Tesseract
+#   - frontend: nginx (React build) + proxy /api -> backend (http://localhost:8080)
+#
+# Persistance (volumes nommés) :
+#   - data          : ChromaDB, documents uploadés, manifest, tessdata OCR
+#   - hf-cache      : modèles embeddings HuggingFace (e5-small)
+#   - ollama-models : modèles Ollama
+#
+# Auth : injectée via variables d'environnement (défauts de développement —
+#       À CHANGER pour un déploiement réel). Voir .env.example à la racine.
+#
+# RAM : la machine hôte (8 Go) est partagée avec le conteneur ollama ; ne pas
+#       lancer de builds/tests lourds pendant qu'un modèle est résident.
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: gct-ollama
+    restart: unless-stopped
+    volumes:
+      - ollama-models:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 20s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gct-backend
+    restart: unless-stopped
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      TESSERACT_CMD: /usr/bin/tesseract
+      AUTH_ENABLED: "${AUTH_ENABLED:-true}"
+      AUTH_ADMIN_TOKEN: "${AUTH_ADMIN_TOKEN:-dev-admin-gct}"
+      AUTH_USER_TOKENS: "${AUTH_USER_TOKENS:-dev-user-gct}"
+      EMBEDDING_MODEL: intfloat/multilingual-e5-small
+      CHROMA_COLLECTION_NAME: gct_documents_v2
+    volumes:
+      - data:/app/data
+      - hf-cache:/root/.cache/huggingface
+    depends_on:
+      ollama:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=5)"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 60s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: gct-frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  data:
+  hf-cache:
+  ollama-models:

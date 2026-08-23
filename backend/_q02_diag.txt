@@ -1,0 +1,4 @@
+Q02 [fr] expected GCT_notes_exemples_50-7.pdf rank=2 R1=0 R3=1
+Question: Quelle commission est chargée d'évaluer les offres pour l'acquisition de pièces de rechange ?
+Expected full pos in 50: 2 sim_exp=0.8238 gap_top1=0.0000 top1=0.8239 spread_top1-5=0.0193
+Top5: [{'file': 'GCT_notes_exemples_50-9.pdf', 'score': 0.8239, 'page': 1}, {'file': 'GCT_notes_exemples_50-7.pdf', 'score': 0.8238, 'page': 1}, {'file': 'GCT_notes_exemples_50-12.pdf', 'score': 0.8082, 'page': 1}, {'file': 'GCT_notes_exemples_50-33.pdf', 'score': 0.8071, 'page': 1}, {'file': 'GCT_notes_exemples_50-16.pdf', 'score': 0.8045, 'page': 1}]

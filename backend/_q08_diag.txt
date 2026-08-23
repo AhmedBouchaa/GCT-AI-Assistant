@@ -1,0 +1,4 @@
+Q08 [ar] expected GCT_notes_exemples_50-24.pdf rank=3 R1=0 R3=1
+Question: من هو رئيس لجنة النظافة والبيئة الصناعية بمركب قابس؟
+Expected full pos in 50: 3 sim_exp=0.8962 gap_top1=0.0012 top1=0.8975 spread_top1-5=0.0312
+Top5: [{'file': 'GCT_notes_exemples_50-49.pdf', 'score': 0.8975, 'page': 1}, {'file': 'GCT_notes_exemples_50-44.pdf', 'score': 0.897, 'page': 1}, {'file': 'GCT_notes_exemples_50-24.pdf', 'score': 0.8962, 'page': 1}, {'file': 'GCT_notes_exemples_50-47.pdf', 'score': 0.8927, 'page': 1}, {'file': 'GCT_notes_exemples_50-20.pdf', 'score': 0.8663, 'page': 1}]

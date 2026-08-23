@@ -1,0 +1,4 @@
+Q03 [fr] expected GCT_notes_exemples_50-16.pdf rank=None R1=0 R3=0
+Question: Quelle est la fonction de Mohamed Ben Youssef au sein de la commission d'inventaire général des stocks ?
+Expected full pos in 50: 8 sim_exp=0.7945 gap_top1=0.0067 top1=0.8012 spread_top1-5=0.0055
+Top5: [{'file': 'GCT_notes_exemples_50-17.pdf', 'score': 0.8012, 'page': 1}, {'file': 'GCT_notes_exemples_50-13.pdf', 'score': 0.7991, 'page': 1}, {'file': 'GCT_notes_exemples_50-18.pdf', 'score': 0.7983, 'page': 1}, {'file': 'GCT_notes_exemples_50-19.pdf', 'score': 0.7965, 'page': 1}, {'file': 'GCT_notes_exemples_50-37.pdf', 'score': 0.7957, 'page': 1}]

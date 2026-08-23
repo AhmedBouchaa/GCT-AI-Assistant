@@ -1,0 +1,2 @@
+# Uvicorn overrides logging: INFO is swallowed (effective level 30=WARNING).
+# Patch: force our forensic loggers to WARNING or configure at import time.

@@ -1,0 +1,11 @@
+# Secrets & environnements locaux (jamais dans l'image)
+.env
+*.local
+
+# Dépendances et caches (reconstruits dans l'image)
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/
+*.log

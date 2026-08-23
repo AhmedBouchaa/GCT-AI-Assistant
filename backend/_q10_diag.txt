@@ -1,0 +1,4 @@
+Q10 [ar] expected GCT_notes_exemples_50-2.pdf rank=1 R1=1 R3=1
+Question: من هو رئيس اللجنة الفنية لصيانة المعدات الثقيلة بوحدات الإنتاج بقابس؟
+Expected full pos in 50: 1 sim_exp=0.9052 gap_top1=0.0000 top1=0.9052 spread_top1-5=0.0163
+Top5: [{'file': 'GCT_notes_exemples_50-2.pdf', 'score': 0.9052, 'page': 1}, {'file': 'GCT_notes_exemples_50-22.pdf', 'score': 0.8991, 'page': 1}, {'file': 'GCT_notes_exemples_50-37.pdf', 'score': 0.8983, 'page': 1}, {'file': 'GCT_notes_exemples_50-29.pdf', 'score': 0.8957, 'page': 1}, {'file': 'GCT_notes_exemples_50-6.pdf', 'score': 0.8889, 'page': 1}]

@@ -1,0 +1,238 @@
+
+================================================================================
+TEST: test_candidate_ranking
+  ASSERTION: FAIL -> 
+  Q: 'Président de la commission de sécurité N° 10/2026'
+    intent: decision=[(10, 2026)] dates=[] entities=[] committee=['safety'] comparison=False multi=True
+    threshold=0.3500
+    [rejected] cand0 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=5/2026 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True}
+    [rejected] cand1 final=0.2355 = 0.1*retr(0.90) + 0.4*meta(0.0000) + 0.5*text(0.2909)
+         decision=9/2026 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True, 'textual_overlap': True}
+    [SELECTED] cand2 final=0.4632 = 0.1*retr(0.70) + 0.4*meta(0.5000) + 0.5*text(0.3864)
+         decision=10/2026 date=None committee= entities=[]
+         flags={'decision_number_match': True, 'textual_overlap': True}
+    selected=[('Info sur la décision 10/2026', 10, None, 0.4632)]
+
+================================================================================
+TEST: test_committee_matching
+  ASSERTION: PASS
+  Q: 'Informations sur la commission technique'
+    intent: decision=[] dates=[] entities=[] committee=['technical'] comparison=False multi=True
+    threshold=0.3500
+    [rejected] cand0 final=0.2300 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.3000)
+         decision=None/None date=None committee=financial entities=[]
+         flags={'committee_mismatch': True, 'textual_overlap': True}
+    [SELECTED] cand1 final=0.5133 = 0.1*retr(0.80) + 0.4*meta(0.5000) + 0.5*text(0.4667)
+         decision=None/None date=None committee=technical entities=[]
+         flags={'committee_match': True, 'textual_overlap': True}
+    selected=[('La commission technique a discuté de la maintenanc', None, None, 0.5133)]
+
+================================================================================
+TEST: test_comparison_question
+  ASSERTION: PASS
+  Q: 'Quel président est meilleur, Ahmed ou Mohamed?'
+    intent: decision=[] dates=[] entities=[] committee=[] comparison=True multi=False
+    threshold=0.3500
+    [rejected] cand0 final=0.1899 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.2198)
+         decision=13/2026 date=None committee= entities=['Ahmed', 'Mohamed']
+         flags={'textual_overlap': True}
+    [SELECTED] cand1 final=0.5638 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.9675)
+         decision=12/2026 date=None committee= entities=['Ahmed', 'Mohamed']
+         flags={'textual_overlap': True}
+    selected=[('Comparaison des présidents: Ahmed est meilleur que', 12, None, 0.5638)]
+
+================================================================================
+TEST: test_english_question
+  ASSERTION: FAIL -> 
+  Q: 'Who is the president of the safety committee on October 20, 2026?'
+    intent: decision=[] dates=['2026-10-20'] entities=[] committee=['safety'] comparison=False multi=True
+    threshold=0.3500
+    [SELECTED] cand0 final=0.4453 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.7305)
+         decision=41/2026 date=2026-10-25 committee=safety entities=['John Doe']
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+    [SELECTED] cand1 final=0.8996 = 0.1*retr(0.80) + 0.4*meta(1.0000) + 0.5*text(0.8392)
+         decision=40/2026 date=2026-10-20 committee=safety entities=['Robert Smith']
+         flags={'date_match': True, 'committee_match': True, 'textual_overlap': True}
+    selected=[('The president of the safety committee is John Doe ', 41, '2026-10-25', 0.4453), ('The president of the safety committee is Robert Sm', 40, '2026-10-20', 0.8996)]
+
+================================================================================
+TEST: test_entity_matching
+  ASSERTION: PASS
+  Q: 'Qui est Ahmed Al-Fiki?'
+    intent: decision=[] dates=[] entities=['Ahmed Al-Fiki'] committee=[] comparison=False multi=False
+    threshold=0.3500
+    [rejected] cand0 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=None/None date=None committee= entities=['Mohamed Else']
+         flags={}
+    [SELECTED] cand1 final=0.4711 = 0.1*retr(0.80) + 0.4*meta(0.2000) + 0.5*text(0.6222)
+         decision=None/None date=None committee= entities=['Ahmed Al-Fiki']
+         flags={'entity_match': True, 'textual_overlap': True}
+    selected=[('Ahmed Al-Fiki est un expert en sécurité.', None, None, 0.4711)]
+
+================================================================================
+TEST: test_exact_date_matching
+  ASSERTION: PASS
+  Q: 'Événement du 20 octobre 2026'
+    intent: decision=[] dates=['2026-10-20'] entities=[] committee=[] comparison=False multi=False
+    threshold=0.3500
+    [rejected] cand0 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=None/None date=2026-10-21 committee= entities=[]
+         flags={'date_mismatch': True}
+    [SELECTED] cand1 final=0.4200 = 0.1*retr(0.80) + 0.4*meta(0.8500) + 0.5*text(0.0000)
+         decision=None/None date=2026-10-20 committee= entities=[]
+         flags={'date_match': True}
+    selected=[("Quelque chose s'est produit ce jour-là.", None, '2026-10-20', 0.42)]
+
+================================================================================
+TEST: test_exact_decision_number_matching
+  ASSERTION: PASS
+  Q: 'Décision N° 015/2026 sur la sécurité'
+    intent: decision=[(15, 2026)] dates=[] entities=[] committee=['safety'] comparison=False multi=False
+    threshold=0.3500
+    [rejected] cand0 final=0.2088 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.2576)
+         decision=15/2025 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True, 'textual_overlap': True}
+    [rejected] cand1 final=0.2800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.4000)
+         decision=16/2026 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True, 'textual_overlap': True}
+    [SELECTED] cand2 final=0.4800 = 0.1*retr(0.80) + 0.4*meta(0.5000) + 0.5*text(0.4000)
+         decision=15/2026 date=None committee= entities=[]
+         flags={'decision_number_match': True, 'textual_overlap': True}
+    selected=[('Contenu de la décision 15/2026', 15, None, 0.48)]
+
+================================================================================
+TEST: test_irrelevant_high_similarity_rejection
+  ASSERTION: PASS
+  Q: 'Président de la commission technique N° 05/2026'
+    intent: decision=[(5, 2026)] dates=[] entities=[] committee=['technical'] comparison=False multi=True
+    threshold=0.3500
+    [rejected] cand0 final=0.2867 = 0.1*retr(0.95) + 0.4*meta(0.0000) + 0.5*text(0.3833)
+         decision=99/2026 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True, 'textual_overlap': True}
+    [SELECTED] cand1 final=0.6688 = 0.1*retr(0.65) + 0.4*meta(0.5000) + 0.5*text(0.8077)
+         decision=5/2026 date=None committee= entities=[]
+         flags={'decision_number_match': True, 'textual_overlap': True}
+    selected=[('Selon la décision N° 05/2026, le président de la c', 5, None, 0.6688)]
+
+================================================================================
+TEST: test_missing_metadata_fallback
+  ASSERTION: FAIL -> 
+  Q: 'Information sur la sécurité industrielle'
+    intent: decision=[] dates=[] entities=[] committee=['safety'] comparison=False multi=False
+    threshold=0.3500
+    [rejected] cand0 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=None/None date=None committee= entities=[]
+         flags={}
+    [rejected] cand1 final=0.2982 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.4364)
+         decision=None/None date=None committee= entities=[]
+         flags={'textual_overlap': True}
+    selected=[]
+
+================================================================================
+TEST: test_multi_document_relevance
+  ASSERTION: FAIL -> 
+  Q: 'Présidents des comités de sécurité et technique'
+    intent: decision=[] dates=[] entities=[] committee=['safety', 'technical'] comparison=False multi=True
+    threshold=0.3500
+    [rejected] cand0 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=7/2026 date=None committee=financial entities=['Finance']
+         flags={'committee_mismatch': True}
+    [SELECTED] cand1 final=0.3899 = 0.1*retr(0.80) + 0.4*meta(0.5000) + 0.5*text(0.2198)
+         decision=8/2026 date=None committee=safety entities=['Ahmed']
+         flags={'committee_match': True, 'textual_overlap': True}
+    [rejected] cand2 final=0.3349 = 0.1*retr(0.80) + 0.4*meta(0.5000) + 0.5*text(0.1099)
+         decision=9/2026 date=None committee=technical entities=['Mohamed']
+         flags={'committee_match': True, 'textual_overlap': True}
+    selected=[('Le président du comité de sécurité est Ahmed.', 8, None, 0.3899)]
+
+================================================================================
+TEST: test_multilingual_arabic_question
+  ASSERTION: FAIL -> 
+  Q: 'من هو رئيس اللجنة الأمنية في 20 أكتوبر 2026؟'
+    intent: decision=[] dates=['2026-10-20'] entities=['من هو رئيس اللجنة الأمنية في'] committee=['safety'] comparison=False multi=False
+    threshold=0.3500
+    [SELECTED] cand0 final=0.3621 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.5641)
+         decision=51/2026 date=2026-10-25 committee=safety entities=['علي حسن']
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+    [SELECTED] cand1 final=0.8091 = 0.1*retr(0.80) + 0.4*meta(1.0000) + 0.5*text(0.6581)
+         decision=50/2026 date=2026-10-20 committee=safety entities=['محمد بن علي']
+         flags={'date_match': True, 'committee_match': True, 'textual_overlap': True}
+    selected=[('رئيس اللجنة الأمنية هو علي حسن في 25 أكتوبر 2026', 51, '2026-10-25', 0.3621), ('رئيس اللجنة الأمنية هو محمد بن علي في 20 أكتوبر 20', 50, '2026-10-20', 0.8091)]
+
+================================================================================
+TEST: test_multilingual_french_question
+  ASSERTION: FAIL -> 
+  Q: 'Qui est le président du comité de sécurité le 20 octobre 2026?'
+    intent: decision=[] dates=['2026-10-20'] entities=[] committee=['safety'] comparison=False multi=False
+    threshold=0.3500
+    [SELECTED] cand0 final=0.4453 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.7305)
+         decision=31/2026 date=2026-10-25 committee=safety entities=['Pierre Martin']
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+    [SELECTED] cand1 final=0.8996 = 0.1*retr(0.80) + 0.4*meta(1.0000) + 0.5*text(0.8392)
+         decision=30/2026 date=2026-10-20 committee=safety entities=['Jean Dubois']
+         flags={'date_match': True, 'committee_match': True, 'textual_overlap': True}
+    selected=[('Le président du comité de sécurité est Pierre Mart', 31, '2026-10-25', 0.4453), ('Le président du comité de sécurité est Jean Dubois', 30, '2026-10-20', 0.8996)]
+
+================================================================================
+TEST: test_similar_template_documents
+  ASSERTION: PASS
+  Q: 'Qui est le président de la commission de sécurité le 20 octobre 2026?'
+    intent: decision=[] dates=['2026-10-20'] entities=[] committee=['safety'] comparison=False multi=True
+    threshold=0.3500
+    [SELECTED] cand0 final=0.3850 = 0.1*retr(0.85) + 0.4*meta(0.0000) + 0.5*text(0.6000)
+         decision=99/2026 date=2026-10-10 committee=safety entities=[]
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+    [SELECTED] cand1 final=0.8808 = 0.1*retr(0.75) + 0.4*meta(1.0000) + 0.5*text(0.8117)
+         decision=50/2026 date=2026-10-20 committee=safety entities=['Mohamed Ben Ali']
+         flags={'date_match': True, 'committee_match': True, 'textual_overlap': True}
+    [SELECTED] cand2 final=0.4453 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.7305)
+         decision=51/2026 date=2026-10-25 committee=safety entities=['Ali Hassan']
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+    selected=[('Le président de la commission de sécurité est resp', 99, '2026-10-10', 0.385), ('Le président de la commission de sécurité est Moha', 50, '2026-10-20', 0.8808), ('Le président de la commission de sécurité est Ali ', 51, '2026-10-25', 0.4453)]
+
+================================================================================
+TEST: test_single_document_relevance
+  ASSERTION: PASS
+  Q: 'Quel est le contenu de la décision N° 010/2026?'
+    intent: decision=[(10, 2026)] dates=[] entities=[] committee=[] comparison=False multi=False
+    threshold=0.3500
+    [rejected] cand0 final=0.2338 = 0.1*retr(0.90) + 0.4*meta(0.0000) + 0.5*text(0.2875)
+         decision=5/2026 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True, 'textual_overlap': True}
+    [SELECTED] cand1 final=0.6367 = 0.1*retr(0.70) + 0.4*meta(0.5000) + 0.5*text(0.7333)
+         decision=10/2026 date=None committee= entities=[]
+         flags={'decision_number_match': True, 'textual_overlap': True}
+    selected=[('Le contenu de la décision N° 010/2026 concerne la ', 10, None, 0.6367)]
+
+================================================================================
+TEST: test_unanswerable_candidate_set
+  ASSERTION: PASS
+  Q: 'Qui est le président de la commission de sécurité?'
+    intent: decision=[] dates=[] entities=[] committee=['safety'] comparison=False multi=True
+    threshold=0.3500
+    [rejected] cand0 final=0.1508 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.1417)
+         decision=None/None date=None committee=financial entities=[]
+         flags={'committee_mismatch': True, 'textual_overlap': True}
+    [rejected] cand1 final=0.1409 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.1218)
+         decision=None/None date=None committee=technical entities=[]
+         flags={'committee_mismatch': True, 'textual_overlap': True}
+    [SELECTED] cand2 final=0.4255 = 0.1*retr(0.80) + 0.4*meta(0.5000) + 0.5*text(0.2909)
+         decision=None/None date=None committee=safety entities=[]
+         flags={'committee_match': True, 'textual_overlap': True}
+    selected=[('Aucun incident de sécurité signalé.', None, None, 0.4255)]
+  Q: 'Qui est John Doe?'
+    intent: decision=[] dates=[] entities=['John Doe'] committee=[] comparison=False multi=False
+    threshold=0.3500
+    [rejected] cand0 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=None/None date=None committee=financial entities=[]
+         flags={}
+    [rejected] cand1 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=None/None date=None committee=technical entities=[]
+         flags={}
+    [rejected] cand2 final=0.0800 = 0.1*retr(0.80) + 0.4*meta(0.0000) + 0.5*text(0.0000)
+         decision=None/None date=None committee=safety entities=[]
+         flags={}
+    selected=[]

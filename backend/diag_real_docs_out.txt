@@ -1,0 +1,63 @@
+Loaded 6 real committee documents:
+  GCT_notes_exemples_50-2.pdf  N° 2  committee=  text_len=640
+  GCT_notes_exemples_50-20.pdf  N° 20  committee=  text_len=689
+  GCT_notes_exemples_50-22.pdf  N° 22  committee=  text_len=611
+  GCT_notes_exemples_50-29.pdf  N° 29  committee=  text_len=611
+  GCT_notes_exemples_50-37.pdf  N° 37  committee=  text_len=650
+  GCT_notes_exemples_50-6.pdf  N° 6  committee=  text_len=595
+
+==============================================================================
+QUESTION: Arabic - safety committee president
+  text: 'من هو رئيس Committees Amenity في 20 أكتوبر 2026؟'
+  intent: decision=[] dates=['2026-10-20'] entities=['من هو رئيس', 'Committees Amenity'] committee=[] comparison=False multi=True
+
+  --- CURRENT PRODUCTION selector (threshold=0.35) ---
+    [rejected] GCT_notes_exemples_50-2.pdf N°2 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-20.pdf N°20 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-22.pdf N°22 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-29.pdf N°29 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-37.pdf N°37 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-6.pdf N°6 relevance=0.0800 retr=0.80 flags=[]
+    -> selected 0: []
+
+==============================================================================
+QUESTION: Arabic - technical committee maintenance equipment
+  text: 'من هو رئيس叭 committees Amenity في 20 أكتوبر 2026؟'
+  intent: decision=[] dates=['2026-10-20'] entities=['من هو رئيس'] committee=[] comparison=False multi=True
+
+  --- CURRENT PRODUCTION selector (threshold=0.35) ---
+    [rejected] GCT_notes_exemples_50-2.pdf N°2 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-20.pdf N°20 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-22.pdf N°22 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-29.pdf N°29 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-37.pdf N°37 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-6.pdf N°6 relevance=0.0800 retr=0.80 flags=[]
+    -> selected 0: []
+
+==============================================================================
+QUESTION: French - safety committee
+  text: 'Qui est le président du comité de sécurité le 20 octobre 2026?'
+  intent: decision=[] dates=['2026-10-20'] entities=[] committee=['safety'] comparison=False multi=False
+
+  --- CURRENT PRODUCTION selector (threshold=0.35) ---
+    [rejected] GCT_notes_exemples_50-2.pdf N°2 relevance=0.1057 retr=0.80 flags=['textual_overlap']
+    [rejected] GCT_notes_exemples_50-20.pdf N°20 relevance=0.1054 retr=0.80 flags=['textual_overlap']
+    [rejected] GCT_notes_exemples_50-22.pdf N°22 relevance=0.1058 retr=0.80 flags=['textual_overlap']
+    [rejected] GCT_notes_exemples_50-29.pdf N°29 relevance=0.1057 retr=0.80 flags=['textual_overlap']
+    [rejected] GCT_notes_exemples_50-37.pdf N°37 relevance=0.1055 retr=0.80 flags=['textual_overlap']
+    [rejected] GCT_notes_exemples_50-6.pdf N°6 relevance=0.1059 retr=0.80 flags=['textual_overlap']
+    -> selected 0: []
+
+==============================================================================
+QUESTION: French - technical committee maintenance
+  text: 'Qui est le président de la commission technique pour la maintenance des équipements lourds à Qabis ?'
+  intent: decision=[] dates=[] entities=[] committee=['technical'] comparison=False multi=True
+
+  --- CURRENT PRODUCTION selector (threshold=0.35) ---
+    [rejected] GCT_notes_exemples_50-2.pdf N°2 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-20.pdf N°20 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-22.pdf N°22 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-29.pdf N°29 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-37.pdf N°37 relevance=0.0800 retr=0.80 flags=[]
+    [rejected] GCT_notes_exemples_50-6.pdf N°6 relevance=0.0800 retr=0.80 flags=[]
+    -> selected 0: []

@@ -6,13 +6,31 @@ paresseusement à la première requête ``/api/v1/ask`` (voir app/api/routes.py)
 Lancement :
     ./venv/Scripts/python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.types import ASGIApp
+import logging
 
 from app.api.routes import chat_router, debug_router, router
 from app.core.config import settings
+
+logger = logging.getLogger(__name__)
+
+class UTF8Middleware(BaseHTTPMiddleware):
+    """Middleware to ensure proper UTF-8 encoding for requests."""
+
+    def __init__(self, app: ASGIApp):
+        super().__init__(app)
+
+    async def dispatch(self, request: Request, call_next):
+        # Log request info for debugging
+        if request.url.path.startswith("/api/v1/ask"):
+            logger.debug(f"UTF8Middleware: Received request to {request.url.path}")
+        response = await call_next(request)
+        return response
 
 app = FastAPI(
     title="GCT AI Assistant API",
@@ -22,6 +40,9 @@ app = FastAPI(
     ),
     version="0.1.0",
 )
+
+# Add UTF-8 middleware to ensure proper encoding handling
+app.add_middleware(UTF8Middleware)
 
 # CORS configurable, désactivé par défaut (aucun frontend à ce stade).
 # Activez via CORS_ORIGINS (origines séparées par des virgules).

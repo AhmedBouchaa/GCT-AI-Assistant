@@ -1,0 +1,130 @@
+GCT AI Assistant Diagnostic Report
+==================================================
+
+Test Case 1: من هو رئيس لجنة السلامة والأمن الصناعي بمركب قابس بتاريخ 20 أكتوبر 2026؟
+Language: ar
+Case: Single document (expected answer in one document)
+
+Retrieved Documents:
+  1. GCT_notes_exemples_50-20.pdf (ID: GCT_notes_exemples_50-20, Score: 0.8921)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 020/2026
+ﺍﻟﺘ...
+  2. GCT_notes_exemples_50-16.pdf (ID: GCT_notes_exemples_50-16, Score: 0.8888)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 016/2026
+ﺍﻟﺘ...
+  3. GCT_notes_exemples_50-31.pdf (ID: GCT_notes_exemples_50-31, Score: 0.8868)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 031/2026
+ﺍﻟﺘ...
+  4. GCT_notes_exemples_50-36.pdf (ID: GCT_notes_exemples_50-36, Score: 0.8822)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 036/2026
+ﺍﻟﺘ...
+  5. GCT_notes_exemples_50-19.pdf (ID: GCT_notes_exemples_50-19, Score: 0.8808)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 019/2026
+ﺍﻟﺘ...
+
+RAG Answer:
+  رئيس لجنة السلامة والأمن الصناعي بمركب قابس بتاريخ 20 أكتوبر 2026 هو طارق بن عثمان، كما يتم تعيينه في المستند GCT_notes_exemples_50-20.pdf على صفحة 1....
+
+Sources Returned:
+  1. GCT_notes_exemples_50-20.pdf (page: 1, score: 0.8921)
+  2. GCT_notes_exemples_50-16.pdf (page: 1, score: 0.8888)
+  3. GCT_notes_exemples_50-31.pdf (page: 1, score: 0.8868)
+  4. GCT_notes_exemples_50-36.pdf (page: 1, score: 0.8822)
+  5. GCT_notes_exemples_50-19.pdf (page: 1, score: 0.8808)
+
+==================================================
+
+Test Case 2: من هو رئيس اللجنة الفنية لصيانة المعدات الثقيلة بوحدات الإنتاج بقابس؟
+Language: ar
+Case: Single document (expected answer in one document)
+
+Retrieved Documents:
+  1. GCT_notes_exemples_50-2.pdf (ID: GCT_notes_exemples_50-2, Score: 0.9028)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 002/2026
+ﺍﻟﺘ...
+  2. GCT_notes_exemples_50-22.pdf (ID: GCT_notes_exemples_50-22, Score: 0.8989)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 022/2026
+ﺍﻟﺘ...
+  3. GCT_notes_exemples_50-37.pdf (ID: GCT_notes_exemples_50-37, Score: 0.8962)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 037/2026
+ﺍﻟﺘ...
+  4. GCT_notes_exemples_50-29.pdf (ID: GCT_notes_exemples_50-29, Score: 0.8934)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 029/2026
+ﺍﻟﺘ...
+  5. GCT_notes_exemples_50-6.pdf (ID: GCT_notes_exemples_50-6, Score: 0.8861)
+      Relevant: False
+      Preview: ﺍﻟﺠﻤﻬﻮﺭﻳﺔ ﺍﻟﺘﻮﻧﺴﻴﺔ
+ﺍﻟﻤﺠﻤﻊ ﺍﻟﻜﻴﻤﻴﺎﺋﻲ ﺍﻟﺘﻮﻧﺴﻲ
+ﺍﻹﺩﺍﺭﺓ ﺍﻟﺠﻬﻮﻳﺔ ﺑﻘﺎﺑﺲ
+ﻣﻘـﺮﺭ ﺗﻨﻈﻴﻤﻲ
+ﺍﻟﻌﺪﺩ:
+N° 006/2026
+ﺍﻟﺘ...
+
+RAG Answer:
+  الرئيس هو: Mohamed Ben Ali, Sifiyan Ben Youssef, Laila Ben Othman, Mariem Ben Othman, Simira Bouzid
+Le président de la commission technique pour la maintenance des équipements lourds à Qabis est diffé...
+
+Sources Returned:
+  1. GCT_notes_exemples_50-2.pdf (page: 1, score: 0.9028)
+  2. GCT_notes_exemples_50-22.pdf (page: 1, score: 0.8989)
+  3. GCT_notes_exemples_50-37.pdf (page: 1, score: 0.8962)
+  4. GCT_notes_exemples_50-29.pdf (page: 1, score: 0.8934)
+  5. GCT_notes_exemples_50-6.pdf (page: 1, score: 0.8861)
+
+==================================================
+

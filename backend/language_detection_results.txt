@@ -1,0 +1,20 @@
+Language Detection Tests:
+==================================================
+PASS: 'من هو الرئيس؟' -> Expected: ar, Got: ar
+PASS: 'الرئيس هو محمد بن علي' -> Expected: ar, Got: ar
+FAIL: 'ما هو تاريخ القرار رقم 006/2026؟' -> Expected: ar, Got: unknown
+PASS: 'اللجنة الفنية لصيانة المعدات' -> Expected: ar, Got: ar
+PASS: 'Qui est le président ?' -> Expected: fr, Got: fr
+PASS: 'Le président est Mohamed Ben Ali' -> Expected: fr, Got: fr
+PASS: 'Quelle est la date de la décision numéro 006/2026 ?' -> Expected: fr, Got: fr
+PASS: 'La commission technique pour la maintenance des équipements' -> Expected: fr, Got: fr
+PASS: 'Who is the president?' -> Expected: en, Got: en
+PASS: 'The president is Mohamed Ben Ali' -> Expected: en, Got: en
+PASS: 'What is the date of decision number 006/2026?' -> Expected: en, Got: en
+PASS: 'The technical committee for equipment maintenance' -> Expected: en, Got: en
+PASS: '12345' -> Expected: unknown, Got: unknown
+PASS: '!@#$%' -> Expected: unknown, Got: unknown
+PASS: '' -> Expected: unknown, Got: unknown
+
+==================================================
+Some language detection tests FAILED

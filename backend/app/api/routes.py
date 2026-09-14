@@ -11,7 +11,7 @@ import uuid
 from pathlib import Path
 from typing import Optional
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, Query
+from fastapi import APIRouter, Depends, File, HTTPException, Request, UploadFile, Query
 
 from app.api.auth import require_admin, require_user
 from app.api.schemas import (
@@ -189,6 +189,72 @@ def debug_runtime() -> dict:
     }
 
 
+@debug_router.post("/test-encoding", tags=["debug"])
+async def test_encoding(request: Request, _role: str = Depends(require_user)) -> dict:
+    """Test endpoint to check how the request body is being encoded."""
+    request_id = _generate_request_id()
+    logger.info(f"[{request_id}] Encoding test endpoint called")
+
+    # Get raw body
+    body = await request.body()
+
+    # Try to decode as UTF-8
+    try:
+        body_as_utf8 = body.decode('utf-8')
+        utf8_success = True
+        utf8_error = None
+    except UnicodeDecodeError as e:
+        body_as_utf8 = None
+        utf8_success = False
+        utf8_error = str(e)
+
+    # Try to decode as Windows-1252 (common Windows encoding)
+    try:
+        body_as_windows1252 = body.decode('windows-1252')
+        windows1252_success = True
+        windows1252_error = None
+    except UnicodeDecodeError as e:
+        body_as_windows1252 = None
+        windows1252_success = False
+        windows1252_error = str(e)
+
+    # Try to decode as ISO-8859-1
+    try:
+        body_as_iso88591 = body.decode('iso-8859-1')
+        iso88591_success = True
+        iso88591_error = None
+    except UnicodeDecodeError as e:
+        body_as_iso88591 = None
+        iso88591_success = False
+        iso88591_error = str(e)
+
+    logger.info(f"[{request_id}] Body length: {len(body)} bytes")
+    logger.info(f"[{request_id}] UTF-8 decode success: {utf8_success}")
+    logger.info(f"[{request_id}] Windows-1252 decode success: {windows1252_success}")
+    logger.info(f"[{request_id}] ISO-8859-1 decode success: {iso88591_success}")
+
+    return {
+        "request_id": request_id,
+        "body_length": len(body),
+        "body_hex": body[:100].hex(),  # First 100 bytes as hex
+        "utf8": {
+            "success": utf8_success,
+            "error": utf8_error,
+            "decoded": body_as_utf8[:200] if body_as_utf8 else None
+        },
+        "windows_1252": {
+            "success": windows1252_success,
+            "error": windows1252_error,
+            "decoded": body_as_windows1252[:200] if body_as_windows1252 else None
+        },
+        "iso_8859_1": {
+            "success": iso88591_success,
+            "error": iso88591_error,
+            "decoded": body_as_iso88591[:200] if body_as_iso88591 else None
+        }
+    }
+
+
 @router.get("/auth/verify", tags=["auth"])
 def auth_verify(role: str = Depends(require_user)) -> dict:
     """Valide le token et retourne le rôle (``user`` ou ``admin``)."""
@@ -218,6 +284,8 @@ def ask(payload: AskRequest, _role: str = Depends(require_user)) -> AskResponse:
     """
     request_id = _generate_request_id()
     logger.info(f"[{request_id}] Incoming /ask request with question: {payload.question[:100]}...")
+    logger.debug(f"[{request_id}] Question length: {len(payload.question)} chars")
+    logger.debug(f"[{request_id}] Question repr: {repr(payload.question[:50])}")
 
     try:
         logger.debug(f"[{request_id}] Calling RAGService.answer() with top_k={payload.top_k}")

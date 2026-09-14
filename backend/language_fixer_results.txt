@@ -1,0 +1,16 @@
+
+Language Fixer Tests:
+==================================================
+PASS: 'Le président est Mohamed Ben Ali' (target: ar) -> Expected mismatch: True, Got: True
+  Fixed: 'الرئيس هو: Mohamed Ben Ali
+est Mohamed Ben Ali'
+PASS: 'الرئيس هو محمد بن علي' (target: fr) -> Expected mismatch: True, Got: True
+  Fixed: 'Le président est: الرئيس هو, محمد بن'
+FAIL: 'Mohamed Ben Ali is the president' (target: ar) -> Expected mismatch: False, Got: True
+  Fixed: 'الرئيس هو: Mohamed Ben Ali
+Mohamed Ben Ali is the president'
+PASS: 'The president is Mohamed Ben Ali' (target: fr) -> Expected mismatch: False, Got: False
+PASS: 'الرئيس هو محمد بن علي' (target: ar) -> Expected mismatch: False, Got: False
+
+==================================================
+Language fixer tests completed

@@ -1,0 +1,116 @@
+
+==============================================================================
+TEST FUNCTION: test_multi_document_relevance
+  RESULT: FAIL -> 
+
+  Question: 'Présidents des comités de sécurité et technique'
+  Intent: decision_numbers=[] dates=[]
+          entities=[]
+          committee_types=['safety', 'technical'] comparison=False multi=True
+  Threshold: 0.3500   n_candidates=3
+    [rejected] cand0 relevance=0.0800 (retrieval=0.80) decision=7/2026 date=None committee=financial entities=['Finance']
+         flags={'committee_mismatch': True}
+         reasons=["Committee type mismatch: expected one of ['safety', 'technical'], got financial"]
+    [SELECTED] cand1 relevance=0.3899 (retrieval=0.80) decision=8/2026 date=None committee=safety entities=['Ahmed']
+         flags={'committee_match': True, 'textual_overlap': True}
+         reasons=['Committee type match: safety', 'Textual overlap: 2 common tokens']
+    [rejected] cand2 relevance=0.3349 (retrieval=0.80) decision=9/2026 date=None committee=technical entities=['Mohamed']
+         flags={'committee_match': True, 'textual_overlap': True}
+         reasons=['Committee type match: technical', 'Textual overlap: 1 common tokens']
+  Selected (1):
+     - relevance=0.3899 decision=8 date=None committee=safety text='Le président du comité de sécurité est Ahmed.'
+
+==============================================================================
+TEST FUNCTION: test_missing_metadata_fallback
+  RESULT: FAIL -> 
+
+  Question: 'Information sur la sécurité industrielle'
+  Intent: decision_numbers=[] dates=[]
+          entities=[]
+          committee_types=['safety'] comparison=False multi=False
+  Threshold: 0.3500   n_candidates=2
+    [rejected] cand0 relevance=0.0800 (retrieval=0.80) decision=None/None date=None committee= entities=[]
+         flags={}
+         reasons=[]
+    [rejected] cand1 relevance=0.2982 (retrieval=0.80) decision=None/None date=None committee= entities=[]
+         flags={'textual_overlap': True}
+         reasons=['Textual overlap: 3 common tokens']
+  Selected: (none)
+
+==============================================================================
+TEST FUNCTION: test_multilingual_arabic_question
+  RESULT: FAIL -> 
+
+  Question: 'من هو رئيس اللجنة الأمنية في 20 أكتوبر 2026؟'
+  Intent: decision_numbers=[] dates=['2026-10-20']
+          entities=['من هو رئيس اللجنة الأمنية في']
+          committee_types=['safety'] comparison=False multi=False
+  Threshold: 0.3500   n_candidates=2
+    [SELECTED] cand0 relevance=0.3621 (retrieval=0.80) decision=51/2026 date=2026-10-25 committee=safety entities=['علي حسن']
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+         reasons=['Date mismatch: expected one of [datetime.datetime(2026, 10, 20, 0, 0)], got 2026-10-25', 'Committee type match: safety', 'Textual overlap: 6 common tokens']
+    [SELECTED] cand1 relevance=0.8091 (retrieval=0.80) decision=50/2026 date=2026-10-20 committee=safety entities=['محمد بن علي']
+         flags={'date_match': True, 'committee_match': True, 'textual_overlap': True}
+         reasons=['Exact date match: 2026-10-20', 'Committee type match: safety', 'Textual overlap: 7 common tokens']
+  Selected (2):
+     - relevance=0.3621 decision=51 date=2026-10-25 committee=safety text='رئيس اللجنة الأمنية هو علي حسن في 25 أكتوبر 2026'
+     - relevance=0.8091 decision=50 date=2026-10-20 committee=safety text='رئيس اللجنة الأمنية هو محمد بن علي في 20 أكتوبر 2026'
+
+==============================================================================
+TEST FUNCTION: test_multilingual_french_question
+  RESULT: FAIL -> 
+
+  Question: 'Qui est le président du comité de sécurité le 20 octobre 2026?'
+  Intent: decision_numbers=[] dates=['2026-10-20']
+          entities=[]
+          committee_types=['safety'] comparison=False multi=False
+  Threshold: 0.3500   n_candidates=2
+    [SELECTED] cand0 relevance=0.4453 (retrieval=0.80) decision=31/2026 date=2026-10-25 committee=safety entities=['Pierre Martin']
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+         reasons=['Date mismatch: expected one of [datetime.datetime(2026, 10, 20, 0, 0)], got 2026-10-25', 'Committee type match: safety', 'Textual overlap: 9 common tokens']
+    [SELECTED] cand1 relevance=0.8996 (retrieval=0.80) decision=30/2026 date=2026-10-20 committee=safety entities=['Jean Dubois']
+         flags={'date_match': True, 'committee_match': True, 'textual_overlap': True}
+         reasons=['Exact date match: 2026-10-20', 'Committee type match: safety', 'Textual overlap: 10 common tokens']
+  Selected (2):
+     - relevance=0.4453 decision=31 date=2026-10-25 committee=safety text='Le président du comité de sécurité est Pierre Martin le 25 octobre 202'
+     - relevance=0.8996 decision=30 date=2026-10-20 committee=safety text='Le président du comité de sécurité est Jean Dubois le 20 octobre 2026.'
+
+==============================================================================
+TEST FUNCTION: test_english_question
+  RESULT: FAIL -> 
+
+  Question: 'Who is the president of the safety committee on October 20, 2026?'
+  Intent: decision_numbers=[] dates=['2026-10-20']
+          entities=[]
+          committee_types=['safety'] comparison=False multi=True
+  Threshold: 0.3500   n_candidates=2
+    [SELECTED] cand0 relevance=0.4453 (retrieval=0.80) decision=41/2026 date=2026-10-25 committee=safety entities=['John Doe']
+         flags={'date_mismatch': True, 'committee_match': True, 'textual_overlap': True}
+         reasons=['Date mismatch: expected one of [datetime.datetime(2026, 10, 20, 0, 0)], got 2026-10-25', 'Committee type match: safety', 'Textual overlap: 9 common tokens']
+    [SELECTED] cand1 relevance=0.8996 (retrieval=0.80) decision=40/2026 date=2026-10-20 committee=safety entities=['Robert Smith']
+         flags={'date_match': True, 'committee_match': True, 'textual_overlap': True}
+         reasons=['Exact date match: 2026-10-20', 'Committee type match: safety', 'Textual overlap: 10 common tokens']
+  Selected (2):
+     - relevance=0.4453 decision=41 date=2026-10-25 committee=safety text='The president of the safety committee is John Doe on October 25, 2026.'
+     - relevance=0.8996 decision=40 date=2026-10-20 committee=safety text='The president of the safety committee is Robert Smith on October 20, 2'
+
+==============================================================================
+TEST FUNCTION: test_candidate_ranking
+  RESULT: FAIL -> 
+
+  Question: 'Président de la commission de sécurité N° 10/2026'
+  Intent: decision_numbers=[(10, 2026)] dates=[]
+          entities=[]
+          committee_types=['safety'] comparison=False multi=True
+  Threshold: 0.3500   n_candidates=3
+    [rejected] cand0 relevance=0.0800 (retrieval=0.80) decision=5/2026 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True}
+         reasons=['Decision number mismatch: expected one of [(10, 2026)], got 5/2026']
+    [rejected] cand1 relevance=0.2355 (retrieval=0.90) decision=9/2026 date=None committee= entities=[]
+         flags={'decision_number_mismatch': True, 'textual_overlap': True}
+         reasons=['Decision number mismatch: expected one of [(10, 2026)], got 9/2026', 'Textual overlap: 2 common tokens']
+    [SELECTED] cand2 relevance=0.4632 (retrieval=0.70) decision=10/2026 date=None committee= entities=[]
+         flags={'decision_number_match': True, 'textual_overlap': True}
+         reasons=['Exact decision number match: N° 10/2026', 'Textual overlap: 3 common tokens']
+  Selected (1):
+     - relevance=0.4632 decision=10 date=None committee= text='Info sur la décision 10/2026'

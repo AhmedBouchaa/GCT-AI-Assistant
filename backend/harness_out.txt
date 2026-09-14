@@ -1,0 +1,47 @@
+BASELINE (current production): weights=(0.1,0.4,0.5) threshold=0.35
+  passed=9 failed=6
+  failing: test_candidate_ranking, test_english_question, test_missing_metadata_fallback, test_multi_document_relevance, test_multilingual_arabic_question, test_multilingual_french_question
+
+=== TOP 25 CONFIGURATIONS (by #passed, then #regressions asc) ===
+  passed=13 failed=10 reg=0 newfix=4  w=(0.05,0.50,0.30) thr=0.30
+  passed=13 failed=10 reg=0 newfix=4  w=(0.05,0.60,0.30) thr=0.30
+  passed=13 failed=10 reg=0 newfix=4  w=(0.05,0.60,0.40) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.05,0.70,0.30) thr=0.30
+  passed=13 failed=10 reg=0 newfix=4  w=(0.05,0.70,0.40) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.10,0.50,0.30) thr=0.30
+  passed=13 failed=10 reg=0 newfix=4  w=(0.10,0.50,0.30) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.10,0.60,0.30) thr=0.30
+  passed=13 failed=10 reg=0 newfix=4  w=(0.10,0.60,0.30) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.10,0.70,0.30) thr=0.30
+  passed=13 failed=10 reg=0 newfix=4  w=(0.10,0.70,0.30) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.15,0.40,0.30) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.15,0.50,0.30) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.15,0.60,0.30) thr=0.35
+  passed=13 failed=10 reg=0 newfix=4  w=(0.15,0.70,0.30) thr=0.35
+  passed=12 failed=11 reg=0 newfix=3  w=(0.05,0.40,0.40) thr=0.35
+  passed=12 failed=11 reg=0 newfix=3  w=(0.05,0.50,0.40) thr=0.35
+  passed=12 failed=11 reg=1 newfix=4  w=(0.05,0.70,0.30) thr=0.35
+  passed=12 failed=11 reg=1 newfix=4  w=(0.10,0.40,0.30) thr=0.30
+  passed=11 failed=12 reg=0 newfix=2  w=(0.05,0.40,0.50) thr=0.25
+  passed=11 failed=12 reg=0 newfix=2  w=(0.05,0.40,0.60) thr=0.30
+  passed=11 failed=12 reg=0 newfix=2  w=(0.05,0.50,0.30) thr=0.25
+  passed=11 failed=12 reg=0 newfix=2  w=(0.05,0.50,0.40) thr=0.30
+  passed=11 failed=12 reg=0 newfix=2  w=(0.05,0.50,0.50) thr=0.25
+  passed=11 failed=12 reg=0 newfix=2  w=(0.05,0.50,0.60) thr=0.30
+
+=== DETAIL: best config w=(0.05,0.50,0.30) thr=0.30 ===
+  [still-fail] test_candidate_ranking
+  [pass     ] test_committee_matching
+  [pass     ] test_comparison_question
+  [NEWFIX   ] test_english_question
+  [pass     ] test_entity_matching
+  [pass     ] test_exact_date_matching
+  [pass     ] test_exact_decision_number_matching
+  [pass     ] test_irrelevant_high_similarity_rejection
+  [still-fail] test_missing_metadata_fallback
+  [NEWFIX   ] test_multi_document_relevance
+  [NEWFIX   ] test_multilingual_arabic_question
+  [NEWFIX   ] test_multilingual_french_question
+  [pass     ] test_similar_template_documents
+  [pass     ] test_single_document_relevance
+  [pass     ] test_unanswerable_candidate_set

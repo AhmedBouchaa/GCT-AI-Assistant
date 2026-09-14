@@ -1,0 +1,12 @@
+Text: 'من هو الرئيس؟'
+  Expected: ar, Detected: ar, Match: True
+
+Text: 'Qui est le président ?'
+  Expected: fr, Detected: fr, Match: True
+
+Text: 'Who is the president?'
+  Expected: en, Detected: en, Match: True
+
+Text: '12345'
+  Expected: unknown, Detected: unknown, Match: True
+

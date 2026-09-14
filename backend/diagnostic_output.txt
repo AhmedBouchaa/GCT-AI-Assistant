@@ -1,0 +1,14 @@
+Waiting for server to be ready...
+
+============================================================
+1. TEST UTF-8 TRANSMISSION
+============================================================
+Traceback (most recent call last):
+  File "D:\Ingenirie\Stage\GCT-AI-Assistant\backend\diagnostic_test.py", line 332, in <module>
+    test_utf8_transmission()
+  File "D:\Ingenirie\Stage\GCT-AI-Assistant\backend\diagnostic_test.py", line 25, in test_utf8_transmission
+    print(f"Request payload: {json.dumps(payload, ensure_ascii=False)}")
+  File "C:\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 31-32: character maps to <undefined>

@@ -1,0 +1,6 @@
+test_multi_document_relevance :: Présidents des comités de sécurité et technique
+test_missing_metadata_fallback :: Information sur la sécurité industrielle
+test_multilingual_arabic_question :: من هو رئيس اللجنة الأمنية في 20 أكتوبر 2026؟
+test_multilingual_french_question :: Qui est le président du comité de sécurité le 20 octobre 2026?
+test_english_question :: Who is the president of the safety committee on October 20, 2026?
+test_candidate_ranking :: Président de la commission de sécurité N° 10/2026

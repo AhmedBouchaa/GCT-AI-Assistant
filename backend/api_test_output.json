@@ -1,0 +1,37 @@
+STATUS: 200
+{
+  "question": "من هو رئيس لجنة السلامة والأمن الصناعي بمركب قابس بتاريخ 20 اكتوبر 2026؟",
+  "answer": "رئيس لجنة السلامة والأمن الصناعي بمركب قابس بتاريخ 20 اكتوبر 2026 هو رئيس مصلحة المحاسبة أحمد الفقيه حسب مستند GCT_notes_exemples_50-36.pdf صفحة 1.",
+  "sources": [
+    {
+      "file_name": "GCT_notes_exemples_50-20.pdf",
+      "page_number": 1,
+      "score": 0.8985954523086548,
+      "chunk_id": "GCT_notes_exemples_50-20"
+    },
+    {
+      "file_name": "GCT_notes_exemples_50-16.pdf",
+      "page_number": 1,
+      "score": 0.8945658802986145,
+      "chunk_id": "GCT_notes_exemples_50-16"
+    },
+    {
+      "file_name": "GCT_notes_exemples_50-31.pdf",
+      "page_number": 1,
+      "score": 0.8916674852371216,
+      "chunk_id": "GCT_notes_exemples_50-31"
+    },
+    {
+      "file_name": "GCT_notes_exemples_50-36.pdf",
+      "page_number": 1,
+      "score": 0.8888823390007019,
+      "chunk_id": "GCT_notes_exemples_50-36"
+    },
+    {
+      "file_name": "GCT_notes_exemples_50-19.pdf",
+      "page_number": 1,
+      "score": 0.8865474462509155,
+      "chunk_id": "GCT_notes_exemples_50-19"
+    }
+  ]
+}
